@@ -1,3 +1,4 @@
+![Playwright Tests](https://github.com/Yashu15/playwright-saucedemo/actions/workflows/playwright.yml/badge.svg)
 # Sauce Demo — Playwright Test Suite
 
 End-to-end test automation for [saucedemo.com](https://www.saucedemo.com) using Playwright and TypeScript.
