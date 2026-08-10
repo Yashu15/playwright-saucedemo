@@ -4,6 +4,7 @@ import { InventoryPage } from '../../pages/InventoryPage';
 
 test.describe('Cart', () => {
 
+  //beforeEach runs before every test in this file
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();

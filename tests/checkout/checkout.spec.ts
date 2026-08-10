@@ -4,7 +4,7 @@ import { InventoryPage } from '../../pages/InventoryPage';
 import { CheckoutPage } from '../../pages/CheckoutPage';
 
 test.describe('Checkout', () => {
-
+  //end to end test
   test('should complete checkout end to end', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const inventoryPage = new InventoryPage(page);
@@ -32,3 +32,8 @@ test.describe('Checkout', () => {
   });
 
 });
+
+//AAA Pattern: Arrange, Act, Assert
+//Arrange: Set up the initial state and prepare the necessary objects and data for the test.
+//Act: Perform the action or behavior that you want to test.
+//Assert: Verify that the expected outcome has occurred, usually by checking the state of the system or the values of certain variables.    
