@@ -28,5 +28,27 @@ test.describe('Login', () => {
     await inventoryPage.logout();
     await expect(page).toHaveURL('/');
   });
+  test('should show error for locked out user', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+
+    // locked_out_user is a special Sauce Demo user that is blocked
+    await loginPage.login('locked_out_user', 'secret_sauce');
+
+    // NEW COMMAND: toContainText() — checks partial text match
+    // Useful when you don't want to assert the full string
+    await expect(loginPage.errorMessage).toContainText('locked out');
+  });
+  test('should show error when username is empty', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+
+    // Click login without entering anything
+    await loginPage.loginButton.click();
+
+    // NEW COMMAND: toBeVisible() combined with toContainText()
+    await expect(loginPage.errorMessage).toBeVisible();
+    await expect(loginPage.errorMessage).toContainText('Username is required');
+  });
 
 });
