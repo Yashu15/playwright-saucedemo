@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 import { InventoryPage } from '../../pages/InventoryPage';
 import { CheckoutPage } from '../../pages/CheckoutPage';
+import { users } from '../../testdata/users';
+import { checkoutData } from '../../testdata/checkoutData';
 
 test.describe('Checkout', () => {
   //end to end test
@@ -12,7 +14,7 @@ test.describe('Checkout', () => {
 
     // Login
     await loginPage.goto();
-    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.login(users.standard.username, users.standard.password);
 
     // Add to cart and go to cart
     await inventoryPage.addFirstProductToCart();
@@ -22,7 +24,7 @@ test.describe('Checkout', () => {
     await checkoutPage.checkoutButton.click();
 
     // Fill details
-    await checkoutPage.fillShippingDetails('Yashika', 'G', '6000');
+    await checkoutPage.fillShippingDetails(checkoutData.validCustomer.firstName, checkoutData.validCustomer.lastName, checkoutData.validCustomer.postCode);
 
     // Finish
     await checkoutPage.finishButton.click();
